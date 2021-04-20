@@ -1,25 +1,21 @@
-import { useEffect } from "react";
-import { Link, Route } from "react-router-dom";
+import { Provider, useSelector } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import PrimaryTemplate from "./components/PrimaryTemplate";
+import store from "./store";
 
-const Foo = (props: any) => {
-  console.log(props.match.params.id);
-  useEffect(() => {
-    console.log("mount");
-  }, []);
+const Foo = () => {
+  const { count } = useSelector((state: any) => state.counter);
 
-  return <h1>Hello</h1>;
+  return <h1>Hello {count}</h1>;
 };
 
 function App() {
   return (
-    <div className="App">
-      <Link to="/foo/1">1</Link>
-      <Link to="/foo/2">2</Link>
-      {/* <Route path="/foo/:id">
-        <Foo />
-      </Route> */}
-      <Route path="/foo/:id" component={Foo} />
-    </div>
+    <BrowserRouter>
+      <Provider store={store}>
+        <PrimaryTemplate />
+      </Provider>
+    </BrowserRouter>
   );
 }
 
