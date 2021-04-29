@@ -1,5 +1,5 @@
-import { combineReducers, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { configureStore, Action } from "@reduxjs/toolkit";
+import { combineReducers, createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
 let initialState = {
   count: 0,
@@ -15,15 +15,13 @@ const counterSlice = createSlice({
   },
 });
 
-const { inc } = counterSlice.actions;
+// const { inc } = counterSlice.actions;
 
 const store = configureStore({
   reducer: combineReducers({
     counter: counterSlice.reducer,
   }),
 });
-
-console.log(inc, store.dispatch);
 
 export type AppDispatch = typeof store.dispatch;
 

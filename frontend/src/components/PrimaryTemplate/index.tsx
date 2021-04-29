@@ -35,6 +35,8 @@ const useStyles = makeStyles((theme: Theme) =>
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
+      position: "fixed",
+      zIndex: 12,
     },
     drawerPaper: {
       width: drawerWidth,
@@ -54,7 +56,6 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      marginLeft: -drawerWidth,
     },
     contentShift: {
       transition: theme.transitions.create("margin", {
@@ -89,6 +90,7 @@ export default function PrimaryTemplate() {
         handleDrawerClose={handleDrawerClose}
         handleDrawerOpen={handleDrawerOpen}
       />
+
       <Main classes={classes} open={open} />
     </div>
   );

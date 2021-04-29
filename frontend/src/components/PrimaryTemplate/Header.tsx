@@ -26,14 +26,14 @@ type ClassesKeys =
   | "drawerPaper"
   | "drawerHeader";
 
-interface IHeader {
+interface Props {
   classes: Record<ClassesKeys, string>;
   open: boolean;
   handleDrawerOpen: () => void;
   handleDrawerClose: () => void;
 }
 
-export const Header: FC<IHeader> = ({
+export const Header: FC<Props> = ({
   classes,
   open,
   handleDrawerOpen,
@@ -70,6 +70,11 @@ export const Header: FC<IHeader> = ({
         open={open}
         classes={{
           paper: classes.drawerPaper,
+        }}
+        ModalProps={{
+          onBackdropClick: () => {
+            handleDrawerClose();
+          },
         }}
       >
         <div className={classes.drawerHeader}>
